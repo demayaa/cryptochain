@@ -20,7 +20,7 @@ const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'client/dist')));
 
 app.post('/api/mine', (req, res) => {
     const { data } = req.body;
@@ -111,7 +111,7 @@ if (process.env.GENERATE_PEER_PORT === 'true') {
 }
 const PORT = PEER_PORT || DEFAULT_PORT;
 app.listen(PORT, () => {
-    console.log(`Listening at localhost:${PORT}`);
+    console.log(`Listening at http://localhost:${PORT}`);
     if (PORT !== DEFAULT_PORT) {
         syncWithRootState();
     }
